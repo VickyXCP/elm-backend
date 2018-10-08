@@ -25,13 +25,12 @@
     },
     methods: {
       initData () {
-        const colors = ['#5793f3', '#675bba', '#d14a61']
-        const options = {
+        const colors = ['#5793f3', '#675bba', '#d14a16']
+        const option = {
           color: colors,
-          //图标的标题与副标题
           title: {
             text: '走势图',
-            subtext: '子标题'
+            subtext: '副标题'
           },
           tooltip: {
             trigger: 'axis'
@@ -41,14 +40,11 @@
           },
           toolbox: {
             show: true,
-            feature: {
-              //区域缩放
+            feature:{
               dataZoom: {
                 yAxisIndex: 'none'
               },
-              //数据视图
               dataView: {readOnly: false},
-              //柱状图、折线图切换以及还原
               magicType: {type: ['bar', 'line']},
               restore: {}
             }
@@ -57,9 +53,79 @@
             type: 'category',
             boundaryGap: false,
             data: this.sevenDay
-          }
+          },
+          yAxis: [
+            {
+              type: 'value',
+              name: '用户',
+              min: 0,
+              max: 200,
+              position: 'left',
+              axisLine: {
+                lineStyle: {
+                  color: '#999'
+                }
+              },
+              axisLabel: {
+                formatter: '{value}'
+              }
+            },
+            {
+              type: 'value',
+              name: '订单',
+              min: 0,
+              max: 200,
+              position: 'right',
+              axisLine: {
+                lineStyle: {
+                  color: '#999'
+                }
+              },
+              axisLabel: {
+                formatter: '{value}'
+              }
+            }
+          ],
+          series: [
+            {
+              name: '新注册用户',
+              type: 'line',
+              data: this.sevenDate[0],
+              yAxisIndex: 1,
+              markPoint: {
+                data: [
+                  {type: 'max', name: '最大值'},
+                  {type: 'min', name: '最小值'}
+                ]
+              }
+            },
+            {
+              name: '新增订单',
+              type: 'line',
+              data: this.sevenDate[1],
+              yAxisIndex: 1,
+              markPoint: {
+                data: [
+                  {type: 'max', name: '最大值'},
+                  {type: 'min', name: '最小值'}
+                ]
+              }
+            },
+            {
+              name: '新增管理员',
+              type: 'line',
+              data: this.sevenDate[2],
+              yAxisIndex: 1,
+              markPoint: {
+                data: [
+                  {type: 'max', name: '最大值'},
+                  {type: 'min', name: '最小值'}
+                ]
+              }
+            }
+          ]
         }
-        this.myChart.setOption(options)
+        this.myChart.setOption(option)
       }
     }
   }

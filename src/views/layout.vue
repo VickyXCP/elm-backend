@@ -116,10 +116,13 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   .layout {
     .icon, .el-submenu__icon-arrow, .el-icon-arrow-down {
       color: white;
+    }
+    .el-submenu__title:hover {
+     background-color: #48576a;
     }
     .el-submenu:hover{
       background-color: #48576a;
@@ -129,6 +132,9 @@
         background-color: #48576a;
       }
     }*/
+    .el-menu{
+      overflow-x: hidden;
+    }
     .el-menu-item {
       background-color: #1f2d3d;
       &:hover{

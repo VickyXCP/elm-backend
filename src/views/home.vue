@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <section>
+  <div class="home">
+    <section class="home-data">
       <header>数据统计</header>
       <el-row :gutter="20">
         <el-col :span="4">
@@ -31,7 +31,7 @@
         </el-col>
       </el-row>
     </section>
-    <tendency :sevenDate="sevenDate" :sevenDay="sevenDay"></tendency>
+    <tendency :sevenDate="sevenDate" :sevenDay="sevenDay" style="margin-top: 30px"></tendency>
   </div>
 </template>
 
@@ -112,3 +112,43 @@
     }
   }
 </script>
+
+<style lang="less" scoped>
+  .home-data{
+    width: 100%;
+    text-align: center;
+    header{
+      font-size: 28px;
+      font-weight: bold;
+      padding: 20px 0 30px 0;
+
+    }
+    .el-row{
+      width: 100%;
+      padding-left: 50px;
+    }
+    .data_list{
+      margin-bottom: 10px;
+      padding: 5px 0;
+      background-color: #e5e9f2;
+      border-radius: 5px;
+      color: #667ab0;
+      .data_num.head{
+        color: #eee;
+      }
+      .data_num{
+        font-size: 24px;
+        font-weight: bold;
+        color: #444;
+      }
+    }
+    .data_list.today_head{
+      font-size: 24px;
+      background-color: #ff9800;
+    }
+    .data_list.all_head{
+      font-size: 24px;
+      background-color: #20a0ff;
+    }
+  }
+</style>
