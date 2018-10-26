@@ -23,7 +23,7 @@
         tableData: null,
         currentRow: null,
         offset: 0,
-        limit: 20,
+        limit: 10,
         currentPage: 1,
         total: 0,
       }
@@ -36,8 +36,8 @@
         try{
           const countData = await getUserCount()
           const users = await getUserList()
-          // console.log(countData)
-          if (countData.status == 1){
+          console.log(countData)
+          if (countData.status === 1){
             this.total = countData.count
           }else {
             throw new Error('获取数据失败')
@@ -56,7 +56,15 @@
         this.tableData = users
         console.log(this.tableData)
       },
-      handleSizeChange(){},
+      handleSizeChange(val){
+      	this.limit = val
+        this.getUsers()
+      },
+      handleCurrentPage(val){
+      	this.currentPage = val
+        this.offset = (val - 1)*this.limit
+        this.getUsers()
+      }
     }
   }
 </script>

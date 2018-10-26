@@ -25,6 +25,8 @@
     },
     methods: {
       initData () {
+	      // console.log(this.sevenDate)
+	      // console.log(this.sevenDay)
         const colors = ['#5793f3', '#675bba', '#d14a16']
         const option = {
           color: colors,
@@ -126,6 +128,14 @@
           ]
         }
         this.myChart.setOption(option)
+      }
+    },
+    watch: {
+    	sevenDate: function(){
+    		this.initData()
+      },
+      sevenDay: function(){
+    		this.initData()
       }
     }
   }

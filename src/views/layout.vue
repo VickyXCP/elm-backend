@@ -1,7 +1,7 @@
 <template>
   <div class="layout fill-contain">
     <el-row style="height: 100%;">
-      <el-col :span="4" style="height: 100%; background-color: #324057;">
+      <el-col :span="4" style="height: 100%; background-color: #324057; overflow: auto">
         <el-menu :default-active="defaultActive" router text-color="#fff" style="background-color: #324057; border: none;">
           <el-menu-item style="background-color:#324057 !important;" index="home"><i class="el-icon-menu icon"></i>首页
           </el-menu-item>
@@ -41,7 +41,7 @@
           </el-submenu>
         </el-menu>
       </el-col>
-      <el-col :span="20" style="min-height: 100%;">
+      <el-col :span="20" style="height: 100%; overflow: hidden">
         <header>
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item>
@@ -58,7 +58,9 @@
             </el-dropdown-menu>
           </el-dropdown>
         </header>
-        <router-view/>
+        <div class='container'>
+          <router-view/>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -154,6 +156,10 @@
       a{
         color: #a2aed1;
       }
+    }
+    .container{
+      height: calc(100% - 60px);
+      overflow: auto;
     }
   }
 </style>

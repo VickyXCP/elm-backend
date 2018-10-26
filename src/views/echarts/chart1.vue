@@ -4,8 +4,8 @@
 </template>
 
 <script>
+import 'echarts-liquidfill/src/liquidFill'
   import echarts from 'echarts/lib/echarts'
-  import 'echarts-liquidfill/src/liquidFill'
   export default {
     name: 'chart1',
     data() {
@@ -13,7 +13,7 @@
         chartInstance: null,
         option:{
           series:[{
-            type: "liquidFill",
+            type: "liquidfill",
             data: [0.6, 0.5, 0.4, 0.3]
           }]
         }
@@ -21,7 +21,7 @@
     },
     mounted() {
       this.chart = echarts.init(document.getElementById('liquidfill-chart'))
-      this.chart.setOption(this.option)
+      // this.chart.setOption(this.option)
     }
   }
 </script>

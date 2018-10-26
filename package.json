@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "css-loader": "^1.0.0",
-    "echarts": "^4.2.0-rc.1",
+    "echarts": "^4.1.0",
     "echarts-liquidfill": "^2.0.2",
     "element-ui": "^2.4.7",
     "less": "^3.8.1",
