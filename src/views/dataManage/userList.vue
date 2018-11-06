@@ -8,7 +8,7 @@
       <el-table-column prop="city"  label="注册地址"></el-table-column>
     </el-table>
 
-    <el-pagination @size-change="handleSizeChange" @current-change = 'handleCurrentPage' :current-page="currentPage" :page-size="limit" layout="total, sizes, prev, pager, next, jumper" :total="total">
+    <el-pagination background align='center' @size-change="handleSizeChange" @current-change = 'handleCurrentPage' :current-page="currentPage" :page-size="limit" layout="total, sizes, prev, pager, next, jumper" :total="total">
     </el-pagination>
   </div>
 </template>
