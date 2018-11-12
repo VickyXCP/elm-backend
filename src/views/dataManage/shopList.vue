@@ -1,5 +1,5 @@
 <template>
-  <div class='shop-page'>
+  <div class='shop-page table-container'>
     商家列表
     <el-table
       :data="tableData"

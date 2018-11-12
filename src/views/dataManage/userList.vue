@@ -1,5 +1,5 @@
 <template>
-  <div class="user-page">
+  <div class="user-page table-container">
     用户列表
     <el-table :data="tableData">
       <el-table-column type="index" width="200"></el-table-column>

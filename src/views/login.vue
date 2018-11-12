@@ -9,8 +9,8 @@
           <el-form-item prop="username">
             <el-input v-model="loginForm.username"></el-input>
           </el-form-item>
-          <el-form-item prop="username">
-            <el-input v-model="loginForm.password"></el-input>
+          <el-form-item prop="password">
+            <el-input type='password' v-model="loginForm.password"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('loginForm')" style="width: 100%">登录</el-button>

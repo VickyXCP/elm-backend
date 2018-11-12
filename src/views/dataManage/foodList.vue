@@ -1,8 +1,11 @@
 <template>
-  <div class="food-page">
+  <div class="food-page table-container">
     食品列表
     <el-table
       :data="tableData"
+      @expand-change = 'expand'
+      :row-key='row=>row.index'
+      :expand-row-keys='expandRow'
       style="width: 100%">
       <el-table-column type="expand">
         <template slot-scope="props">
@@ -20,7 +23,7 @@
               <span>{{ props.row.restaurant_id }}</span>
             </el-form-item>
             <el-form-item label="食品介绍">
-              <span>{{ props.row.decsription }}</span>
+              <span>{{ props.row.description }}</span>
             </el-form-item>
             <el-form-item label="餐馆地址">
               <span>{{ props.row.restaurant_address }}</span>
@@ -89,6 +92,7 @@ export default {
 		return {
 			restaurant_id: '',
 			tableData: null,
+      expandRow: [],
 			total: 0,
 			offset: 0,
 			limit: 10,
@@ -103,7 +107,7 @@ export default {
 	methods: {
 		async initData () {
 			try {
-				const res = await getFoodsCount()
+				const res = await getFoodsCount({restaurant_id: this.restaurant_id})
 				if (res.status == 1) {
 					this.total = res.count
 				} else {
@@ -118,11 +122,21 @@ export default {
 			try {
 				const resData = await getFoods({offset: this.offset, limit: this.limit, restaurant_id: this.restaurant_id})
 				this.tableData = resData
-        console.log(this.tableData)
 			} catch (e) {
 				console.log(e)
 			}
 		},
+    async expand(row,status){
+      if (status){
+      	this.getSelectItemData(row)
+      } else {
+        this.expandRow=[]
+      }
+    },
+    async getSelectItemData(row, type){
+	    const restaurant = await getResturantDetail(row.restaurant_id);
+	    const category = await getMenuById(row.category_id)
+    },
 		handleSizeChange (val) {
 			this.limit = val
 			this.getFoods()
